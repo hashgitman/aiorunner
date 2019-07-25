@@ -96,16 +96,3 @@ class AioRunner:
             text = script.split("\n")[lineno]
 
         raise AioRunnerException(fname, lineno, func, text, info[0].__name__, info[1].__str__())
-
-async def main():
-    script = """await asyncio.sleep(1)
-print("Hello, asyncio!!")
-return "Thanks"
-"""
-    try:
-        response = await AioRunner(script)
-        print(response)
-    except AioRunnerException as e:
-        print(e)
-
-asyncio.run(main())
